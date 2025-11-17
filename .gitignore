@@ -1,0 +1,60 @@
+# Build output
+Build/
+Output/
+*.zip
+
+# PowerShell artifacts
+*.ps1xml
+
+# Logs
+*.log
+Logs/
+*.jsonl
+
+# Test results
+TestResults/
+*.xml
+coverage/
+
+# IDE and editor files
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# User-specific files
+*.user
+*.suo
+
+# Package management
+node_modules/
+packages/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Module-specific
+Config/Config.json
+UserTasks/
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+
+# Sensitive data
+*.key
+*.pfx
+*.p12
+credentials.json
+secrets.json
+ApiKey.txt
+
+.project/

@@ -1,0 +1,46 @@
+{
+    "Version": "1.0",
+    "Execution": {
+        "DefaultThrottle": 32,
+        "DefaultTimeout": 60,
+        "DefaultRetryCount": 2,
+        "RetryDelaySeconds": 5,
+        "RetryBackoffMultiplier": 2.0,
+        "MaxRetryDelaySeconds": 60
+    },
+    "Logging": {
+        "Enabled": true,
+        "LogPath": "",
+        "LogLevel": "Info",
+        "MaxLogFileSizeMB": 10,
+        "MaxLogFiles": 5,
+        "MaskSensitiveData": true,
+        "SensitiveProperties": [
+            "Password",
+            "Secret",
+            "Token",
+            "Key",
+            "Credential",
+            "ApiKey",
+            "AccessToken",
+            "RefreshToken",
+            "ClientSecret"
+        ]
+    },
+    "Tasks": {
+        "BuiltInTaskPath": "",
+        "SystemTaskPath": "",
+        "UserTaskPath": "",
+        "TaskCacheEnabled": true
+    },
+    "Session": {
+        "DefaultProtocol": "WinRM",
+        "SessionReuseEnabled": false,
+        "SessionTimeoutSeconds": 300,
+        "SessionHealthCheckEnabled": true
+    },
+    "Export": {
+        "DefaultFormat": "CSV",
+        "DefaultOutputPath": ""
+    }
+}

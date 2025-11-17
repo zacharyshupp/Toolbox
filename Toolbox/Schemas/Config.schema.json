@@ -1,0 +1,169 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Toolbox Configuration Schema",
+    "description": "Configuration schema for the Toolbox module",
+    "type": "object",
+    "properties": {
+        "Version": {
+            "type": "string",
+            "description": "Configuration schema version",
+            "pattern": "^\\d+\\.\\d+$"
+        },
+        "Execution": {
+            "type": "object",
+            "description": "Default execution settings",
+            "properties": {
+                "DefaultThrottle": {
+                    "type": "integer",
+                    "description": "Default maximum concurrent runspaces",
+                    "minimum": 1,
+                    "maximum": 256,
+                    "default": 32
+                },
+                "DefaultTimeout": {
+                    "type": "integer",
+                    "description": "Default timeout per target in seconds",
+                    "minimum": 1,
+                    "default": 60
+                },
+                "DefaultRetryCount": {
+                    "type": "integer",
+                    "description": "Default number of retry attempts",
+                    "minimum": 0,
+                    "default": 2
+                },
+                "RetryDelaySeconds": {
+                    "type": "integer",
+                    "description": "Initial retry delay in seconds",
+                    "minimum": 1,
+                    "default": 5
+                },
+                "RetryBackoffMultiplier": {
+                    "type": "number",
+                    "description": "Exponential backoff multiplier for retries",
+                    "minimum": 1.0,
+                    "default": 2.0
+                },
+                "MaxRetryDelaySeconds": {
+                    "type": "integer",
+                    "description": "Maximum retry delay in seconds",
+                    "minimum": 1,
+                    "default": 60
+                }
+            }
+        },
+        "Logging": {
+            "type": "object",
+            "description": "Logging configuration",
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable logging",
+                    "default": true
+                },
+                "LogPath": {
+                    "type": "string",
+                    "description": "Path to log directory"
+                },
+                "LogLevel": {
+                    "type": "string",
+                    "description": "Minimum log level to record",
+                    "enum": ["Verbose", "Info", "Warning", "Error"],
+                    "default": "Info"
+                },
+                "MaxLogFileSizeMB": {
+                    "type": "integer",
+                    "description": "Maximum log file size in MB before rotation",
+                    "minimum": 1,
+                    "default": 10
+                },
+                "MaxLogFiles": {
+                    "type": "integer",
+                    "description": "Maximum number of log files to retain",
+                    "minimum": 1,
+                    "default": 5
+                },
+                "MaskSensitiveData": {
+                    "type": "boolean",
+                    "description": "Mask sensitive data in logs",
+                    "default": true
+                },
+                "SensitiveProperties": {
+                    "type": "array",
+                    "description": "Property names to mask in logs",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": ["Password", "Secret", "Token", "Key", "Credential"]
+                }
+            }
+        },
+        "Tasks": {
+            "type": "object",
+            "description": "Task management configuration",
+            "properties": {
+                "BuiltInTaskPath": {
+                    "type": "string",
+                    "description": "Path to built-in tasks (read-only)"
+                },
+                "SystemTaskPath": {
+                    "type": "string",
+                    "description": "Path to system-level custom tasks"
+                },
+                "UserTaskPath": {
+                    "type": "string",
+                    "description": "Path to user-level custom tasks"
+                },
+                "TaskCacheEnabled": {
+                    "type": "boolean",
+                    "description": "Cache task definitions for performance",
+                    "default": true
+                }
+            }
+        },
+        "Session": {
+            "type": "object",
+            "description": "Remote session configuration",
+            "properties": {
+                "DefaultProtocol": {
+                    "type": "string",
+                    "description": "Default remoting protocol",
+                    "enum": ["WinRM", "SSH", "Auto"],
+                    "default": "WinRM"
+                },
+                "SessionReuseEnabled": {
+                    "type": "boolean",
+                    "description": "Enable PSSession reuse by default",
+                    "default": false
+                },
+                "SessionTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "Session idle timeout in seconds",
+                    "minimum": 60,
+                    "default": 300
+                },
+                "SessionHealthCheckEnabled": {
+                    "type": "boolean",
+                    "description": "Enable automatic session health checks",
+                    "default": true
+                }
+            }
+        },
+        "Export": {
+            "type": "object",
+            "description": "Export format configuration",
+            "properties": {
+                "DefaultFormat": {
+                    "type": "string",
+                    "description": "Default export format",
+                    "enum": ["CSV", "JSON", "XML", "Excel"],
+                    "default": "CSV"
+                },
+                "DefaultOutputPath": {
+                    "type": "string",
+                    "description": "Default output directory for exports"
+                }
+            }
+        }
+    }
+}
